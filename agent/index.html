@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A deterministic end-of-day reflection tool that walks you through three axes of psychological growth: Agency, Orientation, and Radius."/>
+  <title>The Daily Reflection Tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Background particles -->
+  <div class="bg-canvas" id="bgCanvas" aria-hidden="true"></div>
+
+  <!-- Axis progress bar -->
+  <header class="session-header" id="sessionHeader" aria-label="Session progress">
+    <div class="axis-track">
+      <div class="axis-pill" id="axisLocus" data-axis="1">
+        <span class="axis-dot"></span>
+        <span>Locus</span>
+      </div>
+      <div class="axis-connector"></div>
+      <div class="axis-pill" id="axisOrientation" data-axis="2">
+        <span class="axis-dot"></span>
+        <span>Orientation</span>
+      </div>
+      <div class="axis-connector"></div>
+      <div class="axis-pill" id="axisRadius" data-axis="3">
+        <span class="axis-dot"></span>
+        <span>Radius</span>
+      </div>
+    </div>
+    <div class="node-counter" id="nodeCounter" aria-live="polite"></div>
+  </header>
+
+  <!-- Main content area -->
+  <main class="stage" id="stage" role="main">
+    <div class="card" id="card" aria-live="polite" aria-atomic="true">
+
+      <!-- Node type badge -->
+      <div class="node-badge" id="nodeBadge" aria-hidden="true"></div>
+
+      <!-- Question text -->
+      <div class="card-body">
+        <p class="card-text" id="cardText"></p>
+      </div>
+
+      <!-- Options -->
+      <div class="options-grid" id="optionsGrid" role="list" aria-label="Answer options"></div>
+
+      <!-- Continue button (for non-question nodes) -->
+      <button class="btn-continue" id="btnContinue" aria-label="Continue to next question">
+        Continue
+        <span class="btn-arrow">→</span>
+      </button>
+
+    </div>
+  </main>
+
+  <!-- Summary panel (shown at SUMMARY node) -->
+  <section class="summary-panel" id="summaryPanel" aria-label="Session summary" hidden>
+    <div class="summary-inner">
+      <div class="summary-header">
+        <div class="summary-icon">✦</div>
+        <h1 class="summary-title">Today's Reflection</h1>
+      </div>
+      <div class="axes-recap" id="axesRecap" role="list" aria-label="Axis scores"></div>
+      <div class="summary-narrative" id="summaryNarrative" aria-live="polite"></div>
+      <button class="btn-restart" id="btnRestart" aria-label="Start a new reflection session">
+        Start a new session
+      </button>
+    </div>
+  </section>
+
+  <script type="module" src="agent.js"></script>
+</body>
+</html>
